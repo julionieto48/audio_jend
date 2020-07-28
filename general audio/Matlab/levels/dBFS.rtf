@@ -1,0 +1,315 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 STIXGeneral-Regular;\f4\fnil\fcharset0 STIXVariants-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c93333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 https://es.wikipedia.org/wiki/DBFS\
+\
+http://www.equaphon-university.net/dbfs-dbu-de-analogico-a-digital-y-viceversa/\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 It is really quite simple for values between 1 and -1:\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 valueDBFS = 20*log10(abs(value))\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\f1 \cf2 If you have values between another range, for example 16bit, then it's:\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 valueDBFS = 20*log10(abs(value)/32768)\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\f1 \cf2 (because 16bit signed has values between -32768 and +32767, e.g. 2^15=32768)\
+And so the general formula is:\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 valueDBFS = 20*log10(abs(value)/maxValue)\
+\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f1 \cf2 2\
+\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/DBFS#RMS_levels"}}{\fldrslt \cf3 \ul \ulc3 All the standards define dBFS as an RMS measurement}}, relative to the RMS level of a full-scale sine wave, so the calculation is:\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 value_dBFS = 20*log10(rms(signal) * sqrt(2)) = 20*log10(rms(signal)) + 3.0103\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl280\partightenfactor0
+\ls1\ilvl0
+\f1 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A full-scale sine wave is 0 dBFS\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A full-scale square wave is +3 dBFS\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 The similar unit dBov is defined in relation to power ratios (so it's also an RMS measurement), such that full-scale DC or square wave is 0 dBov, so that calculation is:\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 value_dBov = 20*log10(rms(signal))\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl280\partightenfactor0
+\ls2\ilvl0
+\f1 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A full-scale sine wave is \uc0\u8722 3 dBov\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A full-scale square wave is 0 dBov\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 \
+\
+\
+\
+\
+https://dsp.stackexchange.com/questions/8785/how-to-compute-dbfs\
+https://en.wikipedia.org/wiki/DBFS#RMS_levels\
+\
+%_______________________________________________\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\f1 \cf2 I am trying to replicate the spetrum as given in Audacity and other commercial software... I am getting crazy with the correct scaling needed in order to have dBFS (with reference to a full scale sine wave).\
+Suppose\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56421 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf2 is the PCM sample at\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56408 
+\f1\i0 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 bit precision, first of all I rescale the PCM samples\
+\
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56416 
+\f1\i0 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\f3 \cf2 =\
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\i \cf2 \uc0\u55349 \u56421 
+\f1\i0 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f3\fs20\fsmilli10181 \cf2 2
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl260\qc\partightenfactor0
+
+\f3\i\fs18 \cf2 \uc0\u55349 \u56408 
+\i0 \uc0\u8722 1
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f3\fs20\fsmilli10181 \cf2 2
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl340\qc\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f4\fs20\fsmilli10181 \cf2 \uc0\u8730 
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl340\qc\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 \
+\
+Suppose now\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56420 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf2 is some window function, I compute the FFT of of size N of the product\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56416 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i \cf2 \uc0\u55349 \u56420 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56417 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 . \
+Let\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56387 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\fs20\fsmilli10181 \cf2 1
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3 \cf2 ,\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\i \cf2 \uc0\u55349 \u56387 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\fs20\fsmilli10181 \cf2 2
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3 \cf2 ,\'85,\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\i \cf2 \uc0\u55349 \u56387 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56385 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf2 be the FFT complex values. Since I am only interested in one-side spectrum, I just retain the fist half of the sequence. Moreover suppose for simplicity that the time series matches the window size\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56385 
+\f1\i0 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 .\
+Taking\
+\
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56413 
+\f1\i0 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56406 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\f3 \cf2 =2\
+\pard\pardeftab720\sl420\qc\partightenfactor0
+\cf2 \up38 \uc0\u8739 \up0 \
+\up38 \uc0\u8739 \up0 \
+\up38 \uc0\u8739 \up0 \
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\i \cf2 \uc0\u55349 \u56387 
+\i0 [
+\i \uc0\u55349 \u56406 
+\i0 ]
+\f1 \
+
+\f3\i \uc0\u55349 \u56385 
+\f1\i0 \
+\pard\pardeftab720\sl340\qc\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl420\qc\partightenfactor0
+
+\f3 \cf2 \up38 \uc0\u8739 \up0 \
+\up38 \uc0\u8739 \up0 \
+\up38 \uc0\u8739 \up0 \
+\pard\pardeftab720\sl320\qc\partightenfactor0
+
+\fs20\fsmilli10181 \cf2 2
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 \
+\
+for\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56406 
+\i0 =1,2,\'85,
+\i \uc0\u55349 \u56385 
+\i0 /2\uc0\u8722 1
+\f1 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf2 should give the power spectrum values. Then one would take\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\fs28\fsmilli14400 \cf2 10\
+log
+\f1 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\fs20\fsmilli10181 \cf2 10
+\f1\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3 \cf2 (\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\i \cf2 \uc0\u55349 \u56413 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56406 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3 \cf2 )
+\f1 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 to get dBFS. \
+But I think that in order to express dBFS one needs to scale the\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f3\i\fs28\fsmilli14400 \cf2 \uc0\u55349 \u56413 
+\f1\i0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f3\i\fs20\fsmilli10181 \cf2 \uc0\u55349 \u56406 
+\f1\i0\fs28\fsmilli14400 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\fs24 \cf2 in some way taking into account the effect of the window. In fact I produced a pure 1KHz sine wave then I computed my spectrum and compared it with that obtained with Audacity, Adobe Audition etc. My FFT stays below by few dBFS so I think it's really a problem of scaling.\
+I hope somebody knows if there is a standard ways of doing that!\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f2 \cf2 \
+\
+https://dsp.stackexchange.com/questions/13785/dbfs-scaling-and-spectrum\
+}

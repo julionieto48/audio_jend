@@ -1,0 +1,151 @@
+AIM:
+To verify Linear Convolution.
+
+EQUIPMENTS:
+
+Operating System – Windows XP
+Constructor - Simulator
+Software - CCStudio 3 & MATLAB 7.5
+
+THEORY:
+
+Convolution is a formal mathematical operation, just as multiplication, addition, and integration. Addition takes two numbers and produces a third number, while convolution takes two signals and produces a third signal. Convolution is used in the mathematics of many fields, such as probability and statistics. In linear systems, convolution is used to describe the relationship between three signals of interest: the input signal, the impulse response, and the output signal.
+
+ 
+In this equation, x1(k), x2(n-k) and y(n) represent the input to and output from the system at time n. Here we could see that one of the input is shifted in time by a value every time it is multiplied with the other input signal. Linear Convolution is quite often used as a method of implementing filters of various types.
+PROGRAM:
+
+
+// Linear convolution program in c language using CCStudio
+
+
+#include<stdio.h>
+
+
+int x[15],h[15],y[15];
+
+
+main()
+{                 int i,j,m,n;
+
+
+                printf("\n enter value for m");        
+                scanf("%d",&m); 
+                printf("\n enter value for n");
+                scanf("%d",&n);
+
+                printf("Enter values for i/p x(n):\n");
+
+                for(i=0;i<m;i++)                           
+                           scanf("%d",&x[i]);   
+             
+
+               printf("Enter Values for i/p h(n) \n");
+               for(i=0;i<n; i++)         
+                           scanf("%d",&h[i]);
+
+
+
+            // padding of zeors
+
+            for(i=m;i<=m+n-1;i++)
+
+                        x[i]=0;
+
+            for(i=n;i<=m+n-1;i++)
+
+                        h[i]=0;
+
+
+
+            /* convolution operation */
+
+            for(i=0;i<m+n-1;i++)
+
+            {          
+
+                        y[i]=0;
+
+                        for(j=0;j<=i;j++)
+
+                        {
+
+                                    y[i]=y[i]+(x[j]*h[i-j]);
+
+                        }
+
+            }
+
+
+
+            //displaying the o/p
+
+            for(i=0;i<m+n-1;i++)
+
+                        printf("\n The Value of output y[%d]=%d",i,y[i]);
+
+}
+
+Result:
+
+enter value for m 5
+enter value for n 5
+Enter values for i/p
+1 2 3 4 5
+Enter Values for h
+1 2 3 4 5
+The Value of output y[0]=1
+The Value of output y[1]=4
+The Value of output y[2]=10
+The Value of output y[3]=20
+The Value of output y[4]=35
+The Value of output y[5]=44
+The Value of output y[6]=46
+The Value of output y[7]=40
+The Value of output y[8]=25
+
+% MATLAB program for linear convolution
+ 
+%linear convolution program
+
+clc;
+clear all;
+close all;
+disp('linear convolution program');
+
+x=input('enter i/p x(n):');
+m=length(x);
+h=input('enter i/p h(n):');
+n=length(h);
+
+x=[x,zeros(1,n)];
+subplot(2,2,1), stem(x);
+title('i/p sequencce x(n)is:');
+xlabel('---->n');
+ylabel('---->x(n)');grid;
+
+h=[h,zeros(1,m)];
+subplot(2,2,2), stem(h);
+title('i/p sequencce h(n)is:');
+xlabel('---->n');
+ylabel('---->h(n)');grid;
+disp('convolution of x(n) & h(n) is y(n):');
+y=zeros(1,m+n-1);
+
+for i=1:m+n-1
+            y(i)=0;
+            for j=1:m+n-1
+                        if(j<i+1)
+                                    y(i)=y(i)+x(j)*h(i-j+1);
+                        end
+            end
+end
+
+y
+subplot(2,2,[3,4]),stem(y);
+title('convolution of x(n) & h(n) is :');
+xlabel('---->n');
+ylabel('---->y(n)');grid; 
+
+
+http://allcomputerprograms.blogspot.com/2011/09/linear-convolution.html
