@@ -1,0 +1,18 @@
+from dB import calc
+
+def main():
+
+    dB = input('Ingrese los dB_fs ')
+    BitDepth = input('Ingrese BitDepth ')
+    Frec_Muestro = input('Ingrese Frecuencia de Muestreo ')
+    Frec_signal = input('Ingrese Frecuencia de la senal periodica ')
+    duracion = input('Ingrese el tiempo de su senal ')
+
+    signal = calc(dB, BitDepth, Frec_Muestro, Frec_signal, duracion)
+    Amplitud = signal.Amp()
+    print 'Amplitud = ', Amplitud
+    signal.graficador(signal.ProcesoSenal(Amplitud))
+
+
+if __name__ == '__main__':
+    main()
