@@ -29,15 +29,14 @@ for i in range(0,len(inputSignal)):
 
 peak = max(inputSignal)
 
-factor = round( float(1 / peak ) ,20 )
-print type(peak)
-print type(inputSignal)
+nivelDeseado = 1  #lineal
+diferencia = nivelDeseado - peak # maximo nivel deseado - pico de la senal original
 
 # outputSignal = factor * inputSignal no se puede asi... asi que toca iterar
 outputSignal = [] * len(inputSignal)
 i = 0
 while i <= len(inputSignal) -1  :
-    outputSignal.append(inputSignal[i] * factor)
+    outputSignal.append(inputSignal[i] + diferencia)
     i += 1
 
 print  outputSignal
@@ -52,4 +51,6 @@ plt.show()
 
 
 
-# tarea : hacer algoritmos de maximo valor
+
+
+

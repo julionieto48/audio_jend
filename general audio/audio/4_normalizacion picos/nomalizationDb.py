@@ -19,7 +19,6 @@ plt.title( ' peak normalization ' )
 plt.grid(True)
 
 
-
 # 0.5 es el max value , asi que 0.5 / 0.5 = 1 ... se debe encontra run facotr de escalamiento
 
 # encontrar el valor maximo peak de la senal
@@ -35,9 +34,16 @@ print type(inputSignal)
 
 # outputSignal = factor * inputSignal no se puede asi... asi que toca iterar
 outputSignal = [] * len(inputSignal)
+
+dB = 0   #  normalizar a este valor en dBs
+linGain = 10 ^(dB / 20)   # convertir a ganancia lineal dB = 20 log(linGain)
+
+print linGain
+
 i = 0
 while i <= len(inputSignal) -1  :
-    outputSignal.append(inputSignal[i] * factor)
+    out = linGain * (1/ peak) * inputSignal[i]
+    outputSignal.append(out)
     i += 1
 
 print  outputSignal
@@ -49,7 +55,3 @@ plt.title( ' peak normalization output ' )
 plt.grid(True)
 
 plt.show()
-
-
-
-# tarea : hacer algoritmos de maximo valor
